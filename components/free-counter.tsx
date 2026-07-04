@@ -1,6 +1,6 @@
 import { Zap } from "lucide-react";
-import { useEffect, useState } from "react";
 
+import { useIsMounted } from "@/hooks/use-is-mounted";
 import { MAX_FREE_COUNTS } from "@/constants";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -16,12 +16,8 @@ export const FreeCounter = ({
   isPro = false,
   apiLimitCount = 0,
 }: FreeCounterProps) => {
-  const [mounted, setMounted] = useState(false);
+  const mounted = useIsMounted();
   const proModal = useProModal();
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   if (!mounted) {
     return null;

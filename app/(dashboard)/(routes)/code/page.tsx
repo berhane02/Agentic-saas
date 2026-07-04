@@ -17,7 +17,7 @@ import { cn } from "@/lib/utils";
 
 import { formSchema } from "./constants";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { ChatCompletionMessageParam } from "openai/resources/index.mjs";
+import { ChatCompletionMessageParam } from "openai/resources/chat/completions";
 import ReactMarkdown from "react-markdown";
 
 import { useRouter } from "next/navigation";
@@ -125,9 +125,9 @@ const CodePage = () => {
             </div>
           )}
           <div className="flex flex-col-reverse gap-y-4">
-            {messages.map((message) => (
+            {messages.map((message, index) => (
               <div
-                key={message.content}
+                key={index}
                 className={cn(
                   "p-8 w-full flex items-start gap-x-8 rounder-lg",
                   message.role === "user"
@@ -136,21 +136,22 @@ const CodePage = () => {
                 )}
               >
                 {message.role === "user" ? <UserAvatar /> : <BotAvatar />}
-                <ReactMarkdown
-                  components={{
-                    pre: ({ node, ...props }) => (
-                      <div className="overflow-auto w-full my-2 bg-black/10 p-2 rounded-lg">
-                        <pre {...props} />
-                      </div>
-                    ),
-                    code: ({ node, ...props }) => (
-                      <code className="bg-black/10 rounded-lg p-1" {...props} />
-                    ),
-                  }}
-                  className="text-sm overflow-hidden leading-7"
-                >
-                  {message.content ||  ""}
-                </ReactMarkdown>
+                <div className="text-sm overflow-hidden leading-7">
+                  <ReactMarkdown
+                    components={{
+                      pre: ({ node, ...props }) => (
+                        <div className="overflow-auto w-full my-2 bg-black/10 p-2 rounded-lg">
+                          <pre {...props} />
+                        </div>
+                      ),
+                      code: ({ node, ...props }) => (
+                        <code className="bg-black/10 rounded-lg p-1" {...props} />
+                      ),
+                    }}
+                  >
+                    {typeof message.content === "string" ? message.content : ""}
+                  </ReactMarkdown>
+                </div>
               </div>
             ))}
           </div>

@@ -17,7 +17,7 @@ import { cn } from "@/lib/utils";
 
 import { formSchema } from "./constants";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { ChatCompletionMessageParam } from "openai/resources/index.mjs";
+import { ChatCompletionMessageParam } from "openai/resources/chat/completions";
 
 
 import { useRouter } from "next/navigation";
@@ -120,16 +120,16 @@ const ConversationPage = () => {
             </div>
           )}
           <div className="flex flex-col-reverse gap-y-4">
-          {messages.map((message)=> (
-            <div 
-               key={message.content}
+          {messages.map((message, index)=> (
+            <div
+               key={index}
                className={cn(
                 "p-8 w-full flex items-start gap-x-8 rounder-lg", 
                 message.role === "user" ? "bg-white border border-black/10" : "bg-muted",)}
             >
                {message.role === "user" ? <UserAvatar /> : <BotAvatar />}
                <p className="text-sm">
-                {message.content}
+                {typeof message.content === "string" ? message.content : ""}
                </p>
                
             </div>
