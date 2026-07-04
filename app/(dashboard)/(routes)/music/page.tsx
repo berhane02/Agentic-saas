@@ -76,7 +76,7 @@ const MusicPage = () => {
                         p-4
                         px-3
                         md:px-6
-                        focus-within:shadow-sm
+                        focus-within:shadow-xs
                         grid
                         grid-cols-12
                         gap-2"

@@ -13,7 +13,7 @@ export const LandingHero = () => {
 
             <div className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl space-y-5 fount-extrabold">
                 <h1> The Best AI Tool for</h1>
-                <div className="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-fuchsia-600">
+                <div className="text-transparent bg-clip-text bg-linear-to-r from-violet-400 to-fuchsia-600">
                     <TypewriterComponent
                     options={{
                         strings: [
