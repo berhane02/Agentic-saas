@@ -1,8 +1,8 @@
-import { auth, currentUser } from "@clerk/nextjs";
+import { auth, currentUser } from "@clerk/nextjs/server";
 import { NextResponse } from "next/server";
 
 import prismadb from "@/lib/prismadb";
-import { stripe } from "@/lib/stripe"
+import { getStripe } from "@/lib/stripe"
 import { absoluteUrl } from "@/lib/utils"
 
 
@@ -11,7 +11,8 @@ export const dynamic = "force-dynamic"
 
 export async function GET() {
     try {
-        const { userId } = auth();
+        const stripe = getStripe();
+        const { userId } = await auth();
         const user = await currentUser();
         if (!userId || !user) {
             return new NextResponse("Unauthorized", { status: 401 });

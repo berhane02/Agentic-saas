@@ -52,7 +52,7 @@ const routes = [
 
 interface SidebarProps {
   apiLimitCount: number;
-  isPro: false;
+  isPro: boolean;
 }
 const Sidebar = ({
   isPro = false,

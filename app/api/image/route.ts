@@ -1,21 +1,16 @@
 
-import { auth } from "@clerk/nextjs";
+import { auth } from "@clerk/nextjs/server";
 import { NextResponse } from "next/server";
 import OpenAI from 'openai';
 import { increaseApiLimit, checkApiLimit } from "@/lib/api-limit";
 import { checkSubscription } from "@/lib/subscription";
 
 
-const openai = new OpenAI({
-    apiKey: process.env.OPENAI_API_KEY
-});
-//const openai = new OpenAIApi(configuration);
-
 export async function POST(
     req: Request
 ) {
     try {
-        const { userId } = auth();
+        const { userId } = await auth();
         const body = await req.json()
         const { prompt, amount = 1, resolution = "512x512" } = body;
 
@@ -23,9 +18,12 @@ export async function POST(
             return new NextResponse("Unauthorized", { status: 401 });
         }
 
-        if (!openai.apiKey) {
+        if (!process.env.OPENAI_API_KEY) {
             return new NextResponse("OpenAI API Key not configure", { status: 500 });
         }
+        const openai = new OpenAI({
+            apiKey: process.env.OPENAI_API_KEY
+        });
 
         if (!prompt) {
             return new NextResponse("Promt are required", { status: 400 });

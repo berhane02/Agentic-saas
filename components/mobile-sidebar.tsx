@@ -5,7 +5,7 @@ import { Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SheetContent, SheetTrigger, Sheet } from "./ui/sheet";
 import Sidebar from "./sidebar";
-import { useEffect, useState } from "react";
+import { useIsMounted } from "@/hooks/use-is-mounted";
 
 interface MobileSidebarProps {
   apiLimitCount: number;
@@ -16,10 +16,7 @@ const MobileSidebar = ({
   apiLimitCount=0,
   isPro=false
 }: MobileSidebarProps) => {
-    const [isMounted, setIsMounted]= useState(false);
-    useEffect(() =>{
-        setIsMounted(true);
-    }, []);
+    const isMounted = useIsMounted();
     if (!isMounted) {
         return null;
     }
