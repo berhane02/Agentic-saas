@@ -6,7 +6,7 @@
     "node": ">=24"
   },
   "scripts": {
-    "dev": "next dev",
+    "dev": "NODE_OPTIONS=--max-http-header-size=65536 next dev",
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",
