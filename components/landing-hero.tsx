@@ -18,7 +18,7 @@ export const LandingHero = () => {
 
       <div
         className="animate-fade-up text-4xl sm:text-5xl md:text-6xl lg:text-7xl space-y-4 font-extrabold tracking-tight"
-        style={{ animationDelay: "100ms" }}
+        style={{ animationDelay: "150ms" }}
       >
         <h1>The Best AI Tool for</h1>
         <div className="text-transparent bg-clip-text bg-linear-to-r from-violet-400 via-fuchsia-500 to-pink-500 pb-2">
@@ -40,7 +40,7 @@ export const LandingHero = () => {
 
       <div
         className="animate-fade-up mx-auto max-w-xl text-sm md:text-xl font-light text-zinc-400 leading-relaxed"
-        style={{ animationDelay: "200ms" }}
+        style={{ animationDelay: "300ms" }}
       >
         Create content using AI 10x faster. Chat, images, video, music and
         code — all in one place.
@@ -48,7 +48,7 @@ export const LandingHero = () => {
 
       <div
         className="animate-fade-up flex items-center justify-center gap-x-4"
-        style={{ animationDelay: "300ms" }}
+        style={{ animationDelay: "450ms" }}
       >
         <Link href={isSignedIn ? "/dashboard" : "/sign-up"}>
           <Button
@@ -63,7 +63,7 @@ export const LandingHero = () => {
 
       <div
         className="animate-fade-up text-zinc-500 text-xs md:text-sm font-normal"
-        style={{ animationDelay: "400ms" }}
+        style={{ animationDelay: "600ms" }}
       >
         No credit card required.
       </div>

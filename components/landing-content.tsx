@@ -46,11 +46,11 @@ export const LandingContent = () => {
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
           {tools.map((tool) => (
             <Link href="/sign-up" key={tool.href}>
-              <Card className="group h-full bg-white/[0.03] border border-white/5 text-white rounded-2xl transition-all duration-300 hover:bg-white/[0.06] hover:border-white/15 hover:-translate-y-1">
+              <Card className="group h-full bg-white/[0.03] border border-white/5 text-white rounded-2xl transition-all duration-500 ease-out hover:bg-white/[0.06] hover:border-white/15 hover:-translate-y-1">
                 <CardContent className="flex flex-col items-center gap-y-4 p-6 text-center">
                   <div
                     className={cn(
-                      "p-3 w-fit rounded-xl transition-transform duration-300 group-hover:scale-110",
+                      "p-3 w-fit rounded-xl transition-transform duration-500 ease-out group-hover:scale-110",
                       tool.bgColor
                     )}
                   >
@@ -75,7 +75,7 @@ export const LandingContent = () => {
           {testimonials.map((item) => (
             <Card
               key={item.description}
-              className="bg-white/[0.03] border border-white/5 text-white rounded-2xl transition-all duration-300 hover:bg-white/[0.06] hover:border-white/15 hover:-translate-y-1"
+              className="bg-white/[0.03] border border-white/5 text-white rounded-2xl transition-all duration-500 ease-out hover:bg-white/[0.06] hover:border-white/15 hover:-translate-y-1"
             >
               <CardHeader>
                 <CardTitle className="flex items-center gap-x-3">
